@@ -31,3 +31,5 @@ t |19| time| |4| 11:20:30.123
 * .z.d => current date .z.t => current time
 *  date stored as 4 byte signed integer and is denoted by yyyy.mm.dd
 ``` q)2000.01.01=0 => 1b ```
+* Implicit type promotion: ```3i+3h => 6i /- promote short to int``` or ```3e+3f => 6f /- real to float ```
+* ``` q) if[count (); show "some text"] /- defaults to 0b ... counts() is count empty list ```
