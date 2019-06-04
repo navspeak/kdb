@@ -33,4 +33,10 @@ t |19| time| |4| 11:20:30.123
 ``` q)2000.01.01=0 => 1b ```
 * Implicit type promotion: ```3i+3h => 6i /- promote short to int``` or ```3e+3f => 6f /- real to float ```
 * Implicit bool promotion: ``` q) if[count (); show "some text"] /- counts() is count empty list => 0 ```
-* Casting **$**
+* Changing types of items - casting **($)**
+  - new type $ object to change
+    - `int$5h =>5i /- named rep or 6$5h =>5i /- number rep or "i"$5h => 5i /- char rep 
+    - "I" $ "4" /- from a string
+  - To cast to a string, we use the keyword string
+    - string `text => "text" or string 1234 => "1234"
+
