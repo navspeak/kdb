@@ -1,5 +1,3 @@
-{toc}
-
 ## Basic Operation
 * 5 * 2 + 4 =>  20 - Right to left
 * \v => to check variable names
@@ -90,4 +88,53 @@ q)mm
       1 12 3
       4 5 6
       7 8 9
-```      
+``` 
+## List Operations
+* Join (,)
+  - 1,2 (atom to atom)
+  - \`a,\`b\`c\`d (atom to list)
+* Drop (_)
+  - 2_1 2 3 4 5 /drop first 2 => 3 4 5
+  - -2_1 2 3 4 5 /drop last 2 => 1 2 3
+  - 1 2 3 4 5 _ 2 /drop item with index 2 => 1 2 4 5
+* Cut (-)
+  - 1 3 4 cut 1 2 3 4 5 6 /cut at index 1, 3 and 4
+  ```
+      2 3
+      ,4
+      5 6
+   ```
+* Take(#)
+  - 2#1 2 3 4 5 /take first 2 => 1 2
+  - -2#1 2 3 4 5 /take last 2 => 4 5
+  - 10#1 2 3 4 5 /repeat take => 1 2 3 4 5 1 2 3 4 5
+  - 2 3#1 2 3 4 5 /2x3 matrix
+    ```
+    1 2 3
+    4 5 1
+    ```
+* Sublist (similar to Take)  
+  - 2 sublist 1 2 3 4 5 /take first 2 => 1 2 
+  - -2 sublist 1 2 3 4 5 /take last 2 => 4 5
+  - 10 sublist 1 2 3 4 5 /take only what's available => 1 2 3 4 5
+  - 2 3 sublist 1 2 3 4 5 /takes 3 items starting from position 2 =>3 4 5
+* Find (?)
+  - 1 2 3 4 5?3 /find the position of 3 =>2
+  - 1 2 3 4 5?7 /not found => 5 /return the maximum index+1
+  - 1 2 2 3 4?2 /only return the first occurrence
+* Random (?)
+  - 5?1 2 3 4 5 /pick 5 random items from the list => 1 3 2 2 4
+  - 5?10 /pick 5 random items less than 10 => 8 5 5 9 2
+  - 5?\`2 /pick 5 random symbols with length 2 => \`ab\`hg\`ij\`fr\`dc
+  - 5?" " /pick 5 random characters => "akdlm"
+  - -5?10 /pick 5 distinct random items less than 10 => 1 6 2 9 4
+* ? is overloaded.If the left arg = list & right = atom of the same type, i.e. list ? atom finds the first occurence of the atom in the list. 
+```
+q)lst:8 1 9 5 4 6 6 1 8 5
+q)lst?8 => 0
+```
+* A number as the left argument to the ? operator and a list as the right argument,number ? list would randomly select number amount of elements from list.
+```
+q)5?lst
+6 6 4 1 5
+```
