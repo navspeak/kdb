@@ -248,3 +248,29 @@ q)l2 where l1<6
 q)l2 where l1=6
 ,4
 ```
+* Timing operations
+```
+q)\t 1000000?10
+21
+/the returned time is given in milliseconds
+```
+To time the operation, repeated say n times, use the command \t:n
+```
+q)\t:100 1000000?10
+1863
+```
+  - Vector operations are much quicker than the alternatives e.g.
+```
+q)d:1000000?200
+q)
+q)/vector form of operation
+q)\t r3:sum d where d>100
+27
+q)/adverb form of operation
+q)\t {if[x>100;r2+::x];}each d
+291
+q)/while loop form of operation
+q)i:0
+q)\t while[i<count d;if[d[i]>100;r1+:d[i]];i+:1]
+932
+```
