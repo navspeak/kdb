@@ -1,3 +1,5 @@
+{toc}
+
 ## Basic Operation
 * 5 * 2 + 4 =>  20 - Right to left
 * \v => to check variable names
