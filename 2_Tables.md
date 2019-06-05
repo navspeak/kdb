@@ -169,3 +169,26 @@ a b
 q)t1+t3
 'length
 ```
+## Questions:
+```
+tab1:([id:"abc"]pupil:`John`Paul`Rachel;subject:`maths`physics`chemistry;mark:96 55 82)
+Extract a dictionary of information corresponding to the id "b".
+Ans: tab["b"]
+```
+Add the following two rows of information to tab1:
+```
+         (id = d; pupil = Emma; subject = maths; mark = 76)
+
+         (id = e; pupil = Michael; subject = biology; mark = 63)
+         
+A) tab1,:([id:"de"]pupil:`Emma`Michael;subject:`maths`physics;mark:76 63)         
+```
+Remove the keyed column from tab1 and rename this new table, tab2.
+```
+tab2:value tab1
+```
+Find the first index where a chemistry entry appears in tab2
+```
+q)tab2[`subject]?`chemistry
+2
+```
