@@ -192,3 +192,25 @@ Find the first index where a chemistry entry appears in tab2
 q)tab2[`subject]?`chemistry
 2
 ```
+# trade table examples
+```
+q)trade: ([] sym:`GOOG`IBM`GOOG`IBM`IBM; time: 09:00 09:01 09:20 09:32 09:34; size: 200 100 1200 200 400; price:20.9 36 30.9 36.1 36.2)
+q)trade
+sym  time  size price
+---------------------
+GOOG 09:00 200  20.9 
+IBM  09:01 100  36   
+GOOG 09:20 1200 30.9 
+IBM  09:32 200  36.1 
+IBM  09:34 400  36.2 
+```
+Divide in 15 min time bucket by symbol
+```
+q)select sum size by sym,15 xbar time.minute from trade
+sym  minute| size
+-----------| ----
+GOOG 09:00 | 200 
+GOOG 09:15 | 1200
+IBM  09:00 | 100 
+IBM  09:30 | 600
+```
