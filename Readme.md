@@ -39,4 +39,53 @@ t |19| time| |4| 11:20:30.123
     - "I" $ "4" /- from a string
   - To cast to a string, we use the keyword string
     - string `text => "text" or string 1234 => "1234"
-
+ 
+## List - collection of atoms
+```
+q) l1:til 5 => 0 1 2 3 4 
+q) l1 * 5 => 0 5 10 15 20
+q) l1 > 3 => 00011b
+q) type l1 => 7h (note it is +ve denoting list)
+q) type each l1 => -6 -6 -6 -6 -6h
+==
+q) emptyList:() => type emptyList => 0h
+q) emptyListWithType:`int$() => type emptyListWithType => 6h
+==
+q) mixedTypeList: (100i;200h;300j;400e) => 0h | type each mixedTypeList => -6 -5 -7h -8h
+== Equal and matches ==
+q) l1: (100i;200i;300i;400i) | l2: (100i;200h;300j;400e)
+q) l1 ~ l1 => 0h (matches => no)
+q) l1 = l2 => 1111h (NOTE: = considers just the value not datatype)
+== Singleton list ==
+q) enlist 100i => ,100
+q)type enlist 100i => 6h
+q)type each enlist 100i => ,-6h
+== Nested list - depth level of 2 or more ==
+q)(1;2;(3;4))
+1
+2
+3 4
+q)type (1;2;(3;4)) => 0h
+== Use index ===
+q) l1: 1 2 3 4 5 6 => l1[0] = 1 => l1[0, 3, 1] => 1 4 2
+== Matrix ==
+q)mm:(1 2 3;4 5 6;7 8 9)
+q)mm
+1 2 3
+4 5 6
+7 8 9
+==Indexing at depth===
+q)mm[0;] /take all from first row
+    1 2 3
+q)mm[;0] /take first item from all rows
+    1 4 7
+q)mm[1;1] /take second item from second row
+     5
+q)mm[2;10]  /returns null of proper type as column
+     0N /index is out of range
+q)mm[0;1]:12
+q)mm
+      1 12 3
+      4 5 6
+      7 8 9
+```      
