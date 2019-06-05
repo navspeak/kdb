@@ -138,3 +138,113 @@ q)lst?8 => 0
 q)5?lst
 6 6 4 1 5
 ```
+* Count
+```
+q)count 1 2 3 4 /count number of elements in list => 4
+q)count enlist 1 2 3 4 /counts the first dimension of the enlisted structure => 1
+q)count (1 2 3;4 5 6) /2 lists in a nested list => 2
+q)count each (1 2 3;4 5 6) /count each list in a nested list => 3 3
+q)count () /works on an empty list => 0
+q)count 5 /works on an atom => 1
+```
+* First, Last
+```
+q)first 42 /operates on atoms and lists => 42
+q)ls: 3 7 8 2 1 4 2 8 0 5
+q)first ls => 3
+q)last ls => 5
+q)ls2:enlist(10)
+q)ls2
+,10
+q)first ls2 /acts as a dual to \`enlist' => 10
+q)nls:(1 2; 4; 5 6 7; 8 9; 0 10 11 12 13)
+q)first each nlst /can be used on each row of a nested list
+1 4 5 8 0
+```
+* Raze
+```
+q)type (1 2 3;4 5 6)
+0h
+q)raze (1 2 3;4 5 6) /raze removes one level of structure
+1 2 3 4 5 6
+q)type raze (1 2 3;4 5 6)
+7h
+q)raze a:(1 2;4 5;(8 9;10 11))
+1
+2
+4
+5
+8 9
+10 11
+
+q)0N!raze a /only one level removed
+(1;2;4;5;8 9;10 11)
+1
+2
+4
+5
+8 9
+10 11
+q)(raze/) a /can be combined with over adverb to produce single list
+1 2 4 5 8 9 10 11
+```
+* distinct - returns the distinct items within a group of entities
+```
+q)syms:\`a\`b\`c\`a\`a\`d\`c
+q)distinct syms => `a`b`c`d
+```
+* except - excludes the specified item from a list or dictionary
+```
+q)l1:45 60 20
+q)l2:45 20 90 80
+q)l1 except l2
+,60
+q)l2 except l1
+90 80
+```
+* inter - returns the elements common to both arguments
+```
+q)list1:1 2 3 4
+q)list2:2 3 6 7
+q)list1 inter list2
+2 3
+```
+* group - applied to a list, returns a dictionary of positions for each distinct element
+* union - returns a list of the distinct elements of its combined arguments
+```
+q)list1:3 4 5 6
+q)list2:6 7 8
+q)list1 union list2
+3 4 5 6 7 8
+q)list2 union list1
+6 7 8 3 4 5
+```
+* flip - takes a simple list, column, dictionary, or table and transposes it
+* in - returns a boolean result on whether a specified item is in a list
+```
+q)fruit:\`apple\`banana\`apple\`pear
+q)\`apple in fruit => 1b
+q)\`orange in fruit => 0b
+```
+* reverse
+* string - can be applied to any data type and the result will be a list of characters 
+forming a string
+```
+q)string `banana
+"banana"
+q)string 1 2 3
+,"1"
+,"2"
+,"3"
+q)raze string 1 2 3
+"123"
+```
+* where
+```
+q)l1:2 4 6 2
+q)l2:8 8 4 3
+q)l2 where l1<6
+8 8 3
+q)l2 where l1=6
+,4
+```
