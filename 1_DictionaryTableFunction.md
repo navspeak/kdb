@@ -143,4 +143,14 @@ c| -7
 q)tab:flip dy4
 'rank
 q)tab:enlist dy4 /put the dictionary elements into a list
+q)tab /as table is a list of dictionaries
+a b c
+-----
+1 2 3
+q)flip enlist each dy4 /convert each atom to singleton list
+a b c
+-----
+1 2 3
+q)tab~flip enlist each dy4
+1b
 ```
