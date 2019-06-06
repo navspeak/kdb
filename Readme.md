@@ -274,3 +274,8 @@ q)i:0
 q)\t while[i<count d;if[d[i]>100;r1+:d[i]];i+:1]
 932
 ```
+## Links
+https://code.kx.com/v2/ref/
+https://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/
+https://code.kx.com/v2/ref/#z
+export QHOME=/Users/navspeak/Downloads/q
