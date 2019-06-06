@@ -279,3 +279,32 @@ https://code.kx.com/v2/ref/
 https://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/
 https://code.kx.com/v2/ref/#z
 export QHOME=/Users/navspeak/Downloads/q
+
+## Questions:
+Suppose we have a list, which is defined as:
+
+    list:2 6 4 12 8
+
+2 6,4 _ list 
+-3#list,6 
+4#list?4 
+-8?list 
+6 sublist list 
+(list?10)#4,list 
+
+Suppose we have two lists:
+
+    list: 2 4 4 7 3
+    list2: 4 7 8 1
+
+Match the input with the corresponding output.
+
+list except list2 
+list2 except list 
+distinct list 
+list2 inter list 
+list inter list2 
+list2 union list 
+reverse list 
+list union list2 
+list where list2<5 
